@@ -79,4 +79,4 @@ Following is how the pipeline looks like in the studio, with automl module and b
 Thereby, the pipeline is published and is also active as diaplayed in the screenshot below.
 <img src="screenshots/Screen Shot 2021-01-07 at 7.35.17 PM.png"/>
  
-#### YouTube Video Link - 
+#### YouTube Video Link - https://youtu.be/_AdKiVzcvh8
