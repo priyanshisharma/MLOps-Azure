@@ -25,6 +25,8 @@ Following flow diagram depicts the process.
  * [Standout Suggestions](#ss)
  
 ## Architecture Diagram<a name="arch"></a>
+Following is the architecture diagram to depict our approach and organisation.
+<img src="mlops-arch.png"/>
 
 ## Future Improvements<a name="fi"></a>
 * One can work with diferent datapoints, and visualise and benchmark the performance while actually using Application Insights.
