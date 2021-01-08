@@ -3,22 +3,30 @@
 ## Project Overview
 I was working with the Bank-Marketing dataset, that contains information about a previous bank marketing campaign from a Portuguese institution, i.e. attributed of the people the campaign dealt with and if a client will subscribe to a term deposit product (which is a binary outcome).
 We seek to predict that outcome. This can be helpful in developing future marketing campaigns.
-The best model, was the VotingEnsemble that had an accuracy of 91.806%. Furthmore, we deployed the model, and consume it through a REST endpoint. Therby, we publish our pipeline of steps, automating the whole procedure.
+The best model, was the VotingEnsemble that had an accuracy of 91.806%. Furthmore, we deployed the model, and consume it through a REST endpoint. Thereby, we publish our pipeline of steps, automating the whole procedure.
 
-## Architecture Diagram
+## Flow Diagram
 Following flow diagram depicts the process.
 <img src="mlops-flow.png"/>
 
-This entire process can be seen as :
-* [Authentication](#auth)
-* [Automated ML Experiment](#automl)
-* [Deploy the best model](#deploy)
-* [Enable logging](#logging)
-* [Swagger Documentation](#swagger)
-* [Consume model endpoints](#consume)
-* [Create and publish a pipeline](#pipeline)
 
-## Future Improvements
+# Table of Contents
+ * [Architecture Diagram](#arch)
+ * [Future Improvements](#fi)
+ * [The Process in Practice](#tpip)
+     * [Authentication](#auth)
+     * [Automated ML Experiment](#automl)
+     * [Deploy the best model](#deploy)
+     * [Enable logging](#logging)
+     * [Swagger Documentation](#swagger)
+     * [Consume model endpoints](#consume)
+     * [Create and publish a pipeline](#pipeline)
+ * [Screen Recording](#sr)
+ * [Standout Suggestions](#ss)
+ 
+## Architecture Diagram<a name="arch"></a>
+
+## Future Improvements<a name="fi"></a>
 * One can work with diferent datapoints, and visualise and benchmark the performance while actually using Application Insights.
 * We may focus more time on exploring the data generating a more random dataset. The following columns have a broad gap in terms of number of instances:
     * There are far more married people than single and divorced.
@@ -29,7 +37,7 @@ This entire process can be seen as :
 * The AutoML experiment could also be run for a longer while which might as well fetch more effective models.
 * Different parameters can be used in AutoML config in order to make more effective models.
 
-## The Process in Practice
+## The Process in Practice<a name="tpip"></a>
 
 #### Authentication <a name="auth"></a>
 Skipped this section, since I used the provided labs.
@@ -52,6 +60,9 @@ Deploy the model as an endpoint. Use an Azure Container Instance for the same, w
 The logs look as follows (post running `logs.py`).
 <img src="screenshots/Screen Shot 2021-01-07 at 6.05.50 PM.png"/>
 
+In the endpoints section of the Azure ML Studio, “Application Insights enabled” now says “true”.
+<img src="screenshots/application-insights-enabled-true.png"/>
+
 The application insights URL in the bottom opens the applications, that are enabled while logging.
 <img src="screenshots/Screen Shot 2021-01-08 at 2.40.16 AM.png"/>
 
@@ -62,9 +73,17 @@ Pull the latest swagger-ui docker image and to run it on port 80.
 Expose swagger.json to a local HTTP server and run it in the swagger-ui.
 <img src="screenshots/Screen Shot 2021-01-07 at 7.06.26 PM.png"/>
 
+The API methods are:
+<img src="screenshots/swagger2.png"/>
+<img src="screenshots/swagger3.png"/>
+
 #### Consume Model Endpoints<a name="consume"></a>
 Entered Scoring URI and primary key in `endpoint.py` and run it.
 <img src="screenshots/Screen Shot 2021-01-07 at 6.46.48 PM.png"/>
+
+We may also perform **benchmarking** by adding appropriate URI in the `benchmarking.sh` file in order to receive results as follows:
+<img src="screenshots/bm1.png"/>
+<img src="screenshots/bm2.png"/>
 
 #### Create, Publish and Consume a Pipeline<a name="pipeline"></a>
 Completed the pipeline run.
@@ -76,7 +95,22 @@ And created the pipeline endpoint.
 Following is how the pipeline looks like in the studio, with automl module and bank marketing dataset.
 <img src="screenshots/Screen Shot 2021-01-08 at 3.04.09 AM.png"/>
 
+We use the RunDetails widget in our Jupyter Notebook, which shows the output as follows:
+<img src="screenshots/run-details-widget-nb.png"/>
+
+The Pipeline appears in our experiments as follows:
+<img src="screenshots/expt-section-pipeline-run.png"/>
+
 Thereby, the pipeline is published and is also active as diaplayed in the screenshot below.
 <img src="screenshots/Screen Shot 2021-01-07 at 7.35.17 PM.png"/>
+
+## Screen Recording<a name="sr"></a>
+<a href="https://youtu.be/_AdKiVzcvh8">YouTube Video Link</a> contains the Working deployed ML model endpoint, Deployed Pipeline, Available AutoML Model, 
+Successful API requests to the endpoint with a JSON payload et cetera in a screen recording.
+
+## Standout Suggestions<a name="ss"></a>
+I was redoing the experiment when I realised that the AutoML run found **StackEnsemble** to be the best performing model, with an accuracy of 91.624%. This is marginally lesser than the accuracy I got with the *VotingEnsemble* previously i.e. 91.806%. Furthermore in this run, the VotingEnsemble had an accuracy of 91.563% which is actually quite close to the StackEnsemble. This indicates the requirement a more thorough look and longer run. As we know, AutoML is a tool to help data scientists, the output of this tool might become more effective or give a greater understanding with a deeper look and some more fine-tuning.
+<img src="screenshots/stackensemble.png"/>
+<img src="screenshots/Screen Shot 2021-01-09 at 1.21.19 AM.png"/>
  
-#### YouTube Video Link - https://youtu.be/_AdKiVzcvh8
+
