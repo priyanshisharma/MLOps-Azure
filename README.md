@@ -7,7 +7,7 @@ The best model, was the VotingEnsemble that had an accuracy of 91.806%. Furthmor
 
 ## Architecture Diagram
 Following flow diagram depicts the process.
-<img src="mlops-arch.png"/>
+<img src="mlops-flow.png"/>
 
 This entire process can be seen as :
 * [Authentication](#auth)
