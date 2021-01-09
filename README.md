@@ -45,34 +45,34 @@ Following is the architecture diagram to depict our approach and organisation.
 Skipped this section, since I used the provided labs.
 
 #### Automated ML Experiment<a name="automl"></a>
-Used the *Bank-Marketing* dataset for the task.
+We have been provided with the *Bank-Marketing* dataset for the task, visible as follows.
 <img src="screenshots/Screen Shot 2021-01-07 at 3.14.00 PM.png"/>
 
-& completed the AutoML experiment.
+We created the appropriate compute required for running an automl run on our dataset. Furthermore, we created an automl run for the same, which completed as follows.
 <img src="screenshots/Screen Shot 2021-01-07 at 4.20.28 PM.png"/>
 
-The best model was the Voting Ensemble.
+The best model was found out to be the Voting Ensemble with an accuracy of 91.806%
 <img src="screenshots/Screen Shot 2021-01-07 at 4.20.40 PM.png"/>
 
 #### Deploy the Best Model<a name="deploy"></a>
-Deployed the model as an endpoint. Used an Azure Container Instance for the same, with authentication enabled i.e. key-based authentication.
+We choose the best model for deployment and enable "Authentication" while deploying the model using Azure Container Instance (ACI).
 <img src="screenshots/Screen Shot 2021-01-08 at 2.30.10 AM.png"/>
 
 #### Enable Application Insights<a name="logging"></a>
-The logs look as follows (post running `logs.py`).
+We performing loggin on our endpoint, by running `logs.py`.
 <img src="screenshots/Screen Shot 2021-01-07 at 6.05.50 PM.png"/>
 
-In the endpoints section of the Azure ML Studio, “Application Insights enabled” now says “true”, that are enabled while logging.
+The executed code in logs.py enables Application Insights. "Application Insights enabled" is disabled before executing logs.py.
 <img src="screenshots/application-insights-enabled-true.png"/>
 
-The application insights URL in the bottom opens the applications.
+The application insights URL in the bottom opens of the above screenshot opens as follows. Notice the insihts generated, for the calls we made while testing.
 <img src="screenshots/Screen Shot 2021-01-08 at 2.40.16 AM.png"/>
 
 #### Swagger Documentation<a name="swagger"></a>
-Pulled the latest swagger-ui docker image and to run it on port 80.
+In order to view the swagger documentation provided by Microsoft Azure, for our endpoint in an appealing and understandable way we required the swagger-ui. I pulled the latest swagger-ui docker image and to run it on port 80.
 <img src="screenshots/Screen Shot 2021-01-07 at 7.05.09 PM.png"/>
 
-Exposed swagger.json to a local HTTP server and run it in the swagger-ui.
+To view our own documentation, I downloaded the swagger.json file and exposed it to a local HTTP server. This can now be run on the swagger-ui.
 <img src="screenshots/Screen Shot 2021-01-07 at 7.06.26 PM.png"/>
 
 The API methods are:
@@ -80,38 +80,34 @@ The API methods are:
 <img src="screenshots/swagger3.png"/>
 
 #### Consume Model Endpoints<a name="consume"></a>
-Entered Scoring URI and primary key in `endpoint.py` and ran it.
+Now that we have implemented and understood our endpoint, we may consume it. This is done by passing appropriate ingormation to the endpoint using the `endpoint.py` file. We entered Scoring URI and primary key in `endpoint.py` in order to run it. The output is as follows:
 <img src="screenshots/Screen Shot 2021-01-07 at 6.46.48 PM.png"/>
 
-I also performd *benchmarking* by adding appropriate URI in the `benchmarking.sh` file, & received results as follows:
+I also performd *benchmarking*. This will help us create a baseline or acceptable performance measure. We used the Apache Benchmark for the same. I added the endpoint URI and Primary Key in the `benchmarking.sh` file, & received results as follows by running it:
 <img src="screenshots/bm1.png"/>
 <img src="screenshots/bm2.png"/>
 
 #### Create, Publish and Consume a Pipeline<a name="pipeline"></a>
-Completed the pipeline run.
-<img src="screenshots/Screen Shot 2021-01-07 at 7.30.23 PM.png"/>
-
-And created the pipeline endpoint.
-<img src="screenshots/Screen Shot 2021-01-07 at 7.31.21 PM.png"/>
-
-Following is how the pipeline looks like in the studio, with automl module and bank marketing dataset.
-<img src="screenshots/Screen Shot 2021-01-08 at 3.04.09 AM.png"/>
-
-I used the RunDetails widget in our Jupyter Notebook, which shows the output as follows:
+With the help of the `aml-pipelines-with-automated-machine-learning-step.ipynb` file, we made the pipeline Run. The RunDetails widget in our Jupyter Notebook, displays the Run Output as follows:
 <img src="screenshots/run-details-widget-nb.png"/>
 
-The Pipeline appears in our experiments as follows:
+Following is how the Pipeline Run looks like in the studio, with automl module and bank marketing dataset.
+<img src="screenshots/Screen Shot 2021-01-08 at 3.04.09 AM.png"/>
+
+It got completed successfuly, as follows.
+<img src="screenshots/Screen Shot 2021-01-07 at 7.30.23 PM.png"/>
+
+Furthermore we also successfully published the Pipeline Endpoint.
+<img src="screenshots/Screen Shot 2021-01-07 at 7.31.21 PM.png"/>
+
+This is how the Pipeline(s) appear in our experiments:
 <img src="screenshots/expt-section-pipeline-run.png"/>
 
 Thereby, the pipeline is published and is also active as displayed in the screenshot below.
 <img src="screenshots/Screen Shot 2021-01-07 at 7.35.17 PM.png"/>
 
 ## Screen Recording<a name="sr"></a>
-<<<<<<< HEAD
 <a href="https://youtu.be/bspUtA2201g">YouTube Video Link</a> contains the Working deployed ML model endpoint, Deployed Pipeline, Available AutoML Model, 
-=======
-This <a href="https://youtu.be/_AdKiVzcvh8">YouTube Video Link</a> contains the Working deployed ML model endpoint, Deployed Pipeline, Available AutoML Model, 
->>>>>>> 67dd49e4d60ad4708a163f96bf274f167a58d9ad
 Successful API requests to the endpoint with a JSON payload et cetera in a screen recording.
 
 ## Standout Suggestions<a name="ss"></a>
