@@ -107,7 +107,7 @@ Thereby, the pipeline is published and is also active as diaplayed in the screen
 <img src="screenshots/Screen Shot 2021-01-07 at 7.35.17 PM.png"/>
 
 ## Screen Recording<a name="sr"></a>
-<a href="https://youtu.be/_AdKiVzcvh8">YouTube Video Link</a> contains the Working deployed ML model endpoint, Deployed Pipeline, Available AutoML Model, 
+<a href="https://youtu.be/bspUtA2201g">YouTube Video Link</a> contains the Working deployed ML model endpoint, Deployed Pipeline, Available AutoML Model, 
 Successful API requests to the endpoint with a JSON payload et cetera in a screen recording.
 
 ## Standout Suggestions<a name="ss"></a>
